@@ -1,0 +1,38 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Crear nuevo producto</span>
+    </mat-toolbar>
+
+    <mat-card class="style">
+        <form [formGroup]="form" (ngSubmit)="crearProducto()">
+            <mat-grid-list cols="3" rowHeight="70px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label >Nombre del producto</mat-label>
+                    <input matInput formControlName="nombre">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="4">
+                    <img class="img" src="./assets/img/new.png">
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label >Precio</mat-label>
+                    <input matInput formControlName="precio">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label >Stock</mat-label>
+                    <input matInput formControlName="stock" matTooltip="Cantidad de productos disponibles">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button class="btn" mat-raised-button routerLink="/welcome/productos">Cancelar</button>
+                    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">Crear</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card>
+    
+</div>

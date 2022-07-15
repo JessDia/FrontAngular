@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+th{
+    width: 20%;
+}
+
+.cursor{
+    cursor: pointer;
+}
+.search{
+    color: #1878d0;
+}
+.edit{
+    color: #1f516f;
+}
+
+.delete{
+    color: #e15639;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}

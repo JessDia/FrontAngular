@@ -1,0 +1,61 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Pagina de usuarios</span>
+        <span class="example-spacer"></span>
+        <button mat-button color="primary" routerLink="/welcome/crear-usuario">Crear usuario</button>
+    </mat-toolbar>
+
+    <mat-form-field appearance="standard">
+        <mat-label>Filtrar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Juan" #input autocomplete="off">
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="nombre">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="apellido">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Apellido </th>
+              <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="correo">
+              <th mat-header-cell *matHeaderCellDef> Correo </th>
+              <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+            </ng-container>
+    
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td class="icon" mat-cell *matCellDef="let element">
+                    <a class="cursor search" matTooltip="Ver usuario">
+                        <mat-icon>search</mat-icon>
+                    </a>
+                    <a class="cursor edit" matTooltip="Editar usuario">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                    <a class="cursor delete" (click)="eliminarUsuario()" matTooltip="Eliminar usuario">
+                        <mat-icon>delete</mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                    showFirstLastButtons 
+                    >
+    </mat-paginator>
+    </div>
+    
+    
+</div>

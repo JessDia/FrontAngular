@@ -9,6 +9,8 @@ import { SharedModule } from './sharedModule/shared/shared.module';
 //Componentes
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptor/AuthInterceptor';
 
 
 
@@ -29,7 +31,13 @@ import { RegistroComponent } from './components/registro/registro.component';
     
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,8 +14,6 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class ProductosComponent implements OnInit {
 
-  Productos: Producto[] = [];
-
   displayedColumns: string[] = ['id', 'nombre', 'precio', 'stock', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
@@ -26,11 +24,13 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.traerProductos();
+    console.log('llega aqui');
   }
 
   traerProductos(){
-    this.Productos = this._productoService.getProductos();
-    this.dataSource = new MatTableDataSource(this.Productos);
+    this._productoService.getProductos().subscribe(productos => {
+      console.log(productos);
+    });
   }
 
   eliminarProducto(){

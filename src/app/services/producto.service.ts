@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Producto } from '../Interfaces/producto';
 
@@ -6,24 +7,23 @@ import { Producto } from '../Interfaces/producto';
 })
 export class ProductoService {
 
-  listaProductos: Producto[] = [
-    {id: 1, nombre: 'Pan de arequipe y coco', precio: 5000, stock: 50},
-    {id: 2, nombre: 'Pan de queso', precio: 3000, stock: 30},
-    {id: 3, nombre: 'arepa de chocolo', precio: 2500, stock: 20},
-    {id: 4, nombre: 'Pan trenza', precio: 5000, stock: 10},
-    {id: 5, nombre: 'Pan de maiz', precio: 2000, stock: 50},
-    {id: 6, nombre: 'Cafe con leche', precio: 1500, stock: 50},
-    {id: 7, nombre: 'Croissant de queso', precio: 3000, stock: 25},
-    {id: 8, nombre: 'Palo de queso', precio: 2000, stock: 40},
-    {id: 9, nombre: 'Empanada', precio: 3000, stock: 30},
   
-  ];
-  
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getProductos(){
-    //slice metodo para retornar una copia del array
-    return this.listaProductos.slice();
+    console.log('llega al servicio');
+
+    // const user: any = localStorage.getItem('user');
+    // const objetoU = JSON.parse(user);
+    // const token = objetoU.autorisation.token;
+    // const auth = new HttpHeaders({
+    //   Autorization: `Bearer ${token}`
+    // })
+    // console.log(user);
+    // console.log(objetoU);
+    // console.log(token);
+    // console.log(auth);
+    return this.http.get('http://127.0.0.1:8000/api/productos');
   }
 
   //Metodo para agregar usuario

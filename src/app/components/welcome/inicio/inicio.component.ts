@@ -11,9 +11,9 @@ export class InicioComponent implements OnInit {
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
-    // this.auth.PerfilUser().subscribe(data =>{
-    //   console.log(data);
-    // });
+    this.auth.PerfilUser().subscribe(data =>{
+    console.log(data);
+    });
   }
 
 }

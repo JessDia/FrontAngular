@@ -12,6 +12,7 @@ export class TokenService {
   constructor() { }
 
   manejarDatos(token: any){
+    console.log('Grabando el token');
     localStorage.setItem('auth_token', token);
   }
   obtenerToken(){

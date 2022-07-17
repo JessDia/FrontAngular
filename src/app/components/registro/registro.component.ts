@@ -22,7 +22,7 @@ export class RegistroComponent implements OnInit {
     this.form = this.formb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.required, Validators.email],
       password: ['', Validators.required]
     })
   }
@@ -42,7 +42,9 @@ export class RegistroComponent implements OnInit {
     // console.log(correo);
     // console.log(contraseña);
 
-
+    
+    
   }
+
 
 }

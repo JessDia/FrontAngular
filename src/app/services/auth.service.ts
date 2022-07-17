@@ -21,19 +21,21 @@ export class AuthService {
 
   //Info del usuario 
   PerfilUser(){
-    console.log('llega al PerfilUSer');
+    
     
     const user: any = localStorage.getItem('user');
+    //console.log('llega al PerfilUSer',user);
     const objetoU = JSON.parse(user);
-    const token = objetoU.autorisation.token;
-    const auth = new HttpHeaders({
-    Autorization: `Bearer ${token}`
-    })
-    console.log(user);
-    console.log(objetoU);
-    console.log(token);
-    console.log(auth);
+    const token = objetoU.authorisation.token;
+    // const auth = new HttpHeaders({
+    // Autorization: `Bearer1 ${token}`
+    // })
+    // console.log(user);
+    // console.log(objetoU);
+    // console.log(token);
+    // console.log(auth);
 
-    return this.http.get('http://127.0.0.1:8000/api/auth/me',{headers: auth});
+    return this.http.get('http://127.0.0.1:8000/api/auth/me');
+    //return this.http.get('http://127.0.0.1:8000/api/auth/me',{headers: auth});
   }
 }

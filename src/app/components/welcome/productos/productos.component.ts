@@ -14,6 +14,8 @@ import { ProductoService } from 'src/app/services/producto.service';
 })
 export class ProductosComponent implements OnInit {
 
+  productos: Producto[] = []
+
   displayedColumns: string[] = ['id', 'nombre', 'precio', 'stock', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
@@ -28,8 +30,11 @@ export class ProductosComponent implements OnInit {
   }
 
   traerProductos(){
-    this._productoService.getProductos().subscribe(productos => {
-      console.log(productos);
+    this._productoService.getProductos().subscribe((data: any) => {
+    //console.log(data.productos);
+    this.dataSource = new MatTableDataSource(data.productos);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     });
   }
 
@@ -39,8 +44,8 @@ export class ProductosComponent implements OnInit {
 
   //cuando se inicialice el ciclo de vida le asignamos al datasource el paginador
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

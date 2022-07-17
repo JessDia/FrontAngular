@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Usuario } from 'src/app/Interfaces/usuario';
+import { ListUser, Usuario } from 'src/app/Interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -13,9 +14,9 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class UsuariosComponent implements OnInit {
 
-  usuarios: Usuario[] = [];
+  usuarios: ListUser[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'correo', 'acciones'];
+  displayedColumns: string[] = ['id', 'name', 'lastname', 'email', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -31,8 +32,15 @@ export class UsuariosComponent implements OnInit {
 
 //Metodo para traer usuario
   traerUsuarios(){
-    this.usuarios = this._UsuarioService.getUsuario();
-    this.dataSource = new MatTableDataSource(this.usuarios);
+      this._UsuarioService.getUsuario().subscribe((data: any)=>{
+      console.log(data, ' hola');
+      this.dataSource = new MatTableDataSource(data.users);
+      
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+    //this.usuarios = this._UsuarioService.getUsuario();
+    //this.dataSource = new MatTableDataSource(this.usuarios);
   }
 
   //Metodo para eliminar usuario
@@ -42,8 +50,8 @@ export class UsuariosComponent implements OnInit {
 
   //Metodo del paginador
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
   }
 
   //Metodo del filtro

@@ -26,7 +26,7 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.traerProductos();
-    console.log('llega aqui');
+    console.log('llega aqui'); //prueba 
   }
 
   traerProductos(){

@@ -12,14 +12,14 @@ export class TokenService {
   constructor() { }
 
   manejarDatos(token: any){
-    console.log('Grabando el token');
+    console.log('Grabando el token'); //prueba
     localStorage.setItem('auth_token', token);
   }
   obtenerToken(){
     return localStorage.getItem('auth_token');
   }
 
-  // Verify the token
+  // Verificar Token
   tokenValido() {
     const token = this.obtenerToken();
     if (token) {

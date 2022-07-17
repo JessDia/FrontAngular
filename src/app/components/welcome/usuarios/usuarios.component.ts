@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ListUser, Usuario } from 'src/app/Interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 
 
 @Component({
@@ -33,14 +33,12 @@ export class UsuariosComponent implements OnInit {
 //Metodo para traer usuario
   traerUsuarios(){
       this._UsuarioService.getUsuario().subscribe((data: any)=>{
-      console.log(data, ' hola');
+      //console.log(data, ' hola'); prueba
       this.dataSource = new MatTableDataSource(data.users);
       
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-    //this.usuarios = this._UsuarioService.getUsuario();
-    //this.dataSource = new MatTableDataSource(this.usuarios);
   }
 
   //Metodo para eliminar usuario

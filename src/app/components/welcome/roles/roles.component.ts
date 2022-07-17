@@ -14,7 +14,7 @@ export class RolesComponent implements OnInit {
 
   rol: Rol[] = [];
 
-  displayedColumns: string[] = ['id', 'nombre', 'acciones'];
+  displayedColumns: string[] = ['id', 'name', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
   
@@ -29,7 +29,10 @@ export class RolesComponent implements OnInit {
   }
 
   traerRol(){
-    this.rol = this._rolService.getRol();
+    this._rolService.getRol().subscribe((data: any)=>{
+    console.log(data);
+    this.dataSource = new MatTableDataSource(data.rol);
+    });
     this.dataSource = new MatTableDataSource(this.rol);
   }
 

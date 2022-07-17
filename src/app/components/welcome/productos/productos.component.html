@@ -40,10 +40,10 @@
             <a class="cursor search" matTooltip="Ver producto">
               <mat-icon>search</mat-icon>
             </a>
-            <a class="cursor edit" matTooltip="Editar producto">
+            <a class="cursor edit" matTooltip="Editar producto" (click)="editProductos(element.id)">
               <mat-icon>edit</mat-icon>
             </a>
-            <a class="cursor delete" (click)="eliminarProducto()" matTooltip="Eliminar producto">
+            <a class="cursor delete" (click)="eliminarProducto(element.id)" matTooltip="Eliminar producto">
               <mat-icon>delete</mat-icon>
             </a>
           </td>

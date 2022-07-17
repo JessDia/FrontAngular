@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import {  ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
 //Angular material
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -20,6 +21,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCardModule,
     MatGridListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    
   ],
   exports: [
     MatFormFieldModule,
@@ -59,7 +63,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatCardModule,
     MatGridListModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+  
   ]
 })
 export class SharedModule { }

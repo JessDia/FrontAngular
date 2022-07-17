@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/AuthInterceptor';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -27,7 +28,8 @@ import { AuthInterceptor } from './interceptor/AuthInterceptor';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    RouterModule
     
 
   ],

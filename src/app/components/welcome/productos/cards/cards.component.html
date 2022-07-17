@@ -1,9 +1,4 @@
-<div class="container">
-    <mat-toolbar>
-        <span>Pagina de inicio</span>
-    </mat-toolbar>
-</div>
-<div *ngFor="let p of producto">
+<div *ngForm="let p of producto">
     <mat-card class="example-card">
         <mat-card-header>
           <div mat-card-avatar class="example-header-image"></div>
@@ -25,3 +20,4 @@
         </mat-card-actions>
       </mat-card>
 </div>
+

@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/Interfaces/producto';
 import { ProductoService } from 'src/app/services/producto.service';
+import { AlertasService } from 'src/app/services/alertas.service';
 
 
 
@@ -22,7 +24,9 @@ export class ProductosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   
-  constructor(private _productoService: ProductoService) { }
+  constructor(private _productoService: ProductoService,
+    private route: Router,
+    private alerta: AlertasService) { }
 
   ngOnInit(): void {
     this.traerProductos();
@@ -38,9 +42,29 @@ export class ProductosComponent implements OnInit {
     });
   }
 
-  eliminarProducto(){
-    //Ventana de confirmación
+  
+  editProductos(id: any){
+    this.route.navigate(['/welcome/edit-producto/', id]);
+    console.log(id, 'Esta es el id a editar');
+
   }
+
+  eliminarProducto(id: any){
+    this.alerta.Confirmacion('¿Deseas eliminar este producto?').then(result =>{
+      if(!result.isConfirmed){
+        return;
+      }else{
+        this._productoService.deleteProductos(id).subscribe(data =>{
+          console.log('Producto eliminado');
+          this.traerProductos();
+          this.alerta.Exitoso('Producto eliminado con exito');
+        });
+      }
+    })
+    
+  }
+
+  
 
   //cuando se inicialice el ciclo de vida le asignamos al datasource el paginador
   ngAfterViewInit() {

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
+import { AddProductosComponent } from './productos/add-productos/add-productos.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
 import { ProductosComponent } from './productos/productos.component';
 import { CrearRolComponent } from './roles/crear-rol/crear-rol.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path: 'roles', component: RolesComponent},
     {path: 'crear-usuario', component: CrearUsuarioComponent},
     {path: 'crear-rol', component: CrearRolComponent},
-    {path: 'crear-producto', component: CrearProductoComponent}
+    {path: 'crear-producto', component: AddProductosComponent},
+    {path: 'edit-producto/:id', component: CrearProductoComponent}
 
   ]}
 

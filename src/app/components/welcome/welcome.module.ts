@@ -12,6 +12,8 @@ import { RolesComponent } from './roles/roles.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
 import { CrearRolComponent } from './roles/crear-rol/crear-rol.component';
+import { AddProductosComponent } from './productos/add-productos/add-productos.component';
+import { CardsComponent } from './productos/cards/cards.component';
 
 
 @NgModule({
@@ -24,7 +26,10 @@ import { CrearRolComponent } from './roles/crear-rol/crear-rol.component';
     RolesComponent,
     CrearUsuarioComponent,
     CrearProductoComponent,
-    CrearRolComponent
+    CrearRolComponent,
+    AddProductosComponent,
+    CardsComponent,
+    
   ],
   imports: [
     CommonModule,

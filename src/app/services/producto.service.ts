@@ -7,12 +7,6 @@ import { Producto } from '../Interfaces/producto';
 })
 export class ProductoService {
 
-  // listaproducto: Producto[] = [
-  //   {id: 1, nombre: 'Arepa de chocolo', precio: 2500, stock: 20},
-  //   {id: 3, nombre: 'Arepa', precio: 2500, stock: 20},
-  // ]
-
-
   constructor(private http: HttpClient) { }
 
   getProductos(){
@@ -22,7 +16,19 @@ export class ProductoService {
   }
 
   //Metodo para agregar usuario
-  agregarProducto(){
+  agregarProducto(data: Producto){
+    return this.http.post('http://127.0.0.1:8000/api/addProductos', data);
+  }
 
+  getProductobyID(id: any){
+    return this.http.get('http://127.0.0.1:8000/api/productosByID/' + id);
+  }
+
+  deleteProductos(id: any){
+    return this.http.delete('http://127.0.0.1:8000/api/deleteProductos/'+id);
+  }
+
+  updateProductos(id: any,data: any){
+    return this.http.put('http://127.0.0.1:8000/api/updateProductos/'+id, data);
   }
 }

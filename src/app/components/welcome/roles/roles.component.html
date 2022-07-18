@@ -29,10 +29,10 @@
           <a class="cursor search" matTooltip="Ver rol">
             <mat-icon>search</mat-icon>
           </a>
-          <a class="cursor edit" matTooltip="Editar rol">
+          <a class="cursor edit" matTooltip="Editar rol" (click)="editarRol(element.id)">
             <mat-icon>edit</mat-icon>
           </a>
-          <a class="cursor delete" (click)="eliminarRol()" matTooltip="Eliminar rol">
+          <a class="cursor delete" (click)="eliminarRol(element.id)" matTooltip="Eliminar rol">
             <mat-icon>delete</mat-icon>
           </a>
           

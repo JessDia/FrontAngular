@@ -14,12 +14,6 @@ export class CrearRolComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({});
 
-  tiles: any[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
 
   constructor(
     private fb: FormBuilder, 
@@ -35,7 +29,16 @@ export class CrearRolComponent implements OnInit {
   }
 
   crearRol(){
-    
+    this._rolService.CreateRole(this.form.value).subscribe(data =>{
+      console.log(data,'Estamos creando el rol');
+      this.alertas.Exitoso('El nuevo rol ha sido creado');
+      this.route.navigate(['/welcome/roles']);
+    })
   }
+
+  Actividad(){
+    this.crearRol();
+  }
+
 
 }

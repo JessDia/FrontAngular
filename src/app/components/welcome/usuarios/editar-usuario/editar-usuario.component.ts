@@ -63,8 +63,7 @@ export class EditarUsuarioComponent implements OnInit {
       console.log('datos id', data);
       this.data = data;
       this.usuarios = data;
-      console.log(this.usuarios, 'Si se guardan los productos');
-      
+      console.log(this.usuarios, 'Si se guardan los usuarios');
     });
   }
 

@@ -1,0 +1,27 @@
+<div class="container">
+    <mat-toolbar>
+        <span>Actualizar rol</span>
+    </mat-toolbar>
+    <mat-card class="style">
+        <form  [formGroup]="form" (ngSubmit)="Actividad()">
+            <mat-grid-list class="grid" cols="3" rowHeight="70px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1" >
+                    <mat-form-field class="width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="name" [(ngModel)]="roles.rol.name">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="2">
+                    <img class="img" src="./assets/img/scrum.png">
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button class="button" routerLink="/welcome/roles" mat-raised-button>Cancelar</button>
+                    <button type="submit" class="button" [disabled]="form.invalid"  
+                    mat-raised-button color="primary">Actualizar</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            
+        </form>
+    </mat-card>
+</div>
+

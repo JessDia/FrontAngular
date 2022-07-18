@@ -22,7 +22,7 @@ export class AlertasService {
       icon: 'success',
       title: msn,
       showConfirmButton: false,
-      timer: 1500
+      timer: 2000
     })
   }
 
@@ -33,7 +33,7 @@ export class AlertasService {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Eliminar!',
+      confirmButtonText: 'Eliminar',
       cancelButtonText: 'Cancelar'
       
     })

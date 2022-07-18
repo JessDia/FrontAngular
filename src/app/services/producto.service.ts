@@ -15,20 +15,21 @@ export class ProductoService {
     return data;
   }
 
-  //Metodo para agregar usuario
+  //Metodo para agregar producto
   agregarProducto(data: Producto){
     return this.http.post('http://127.0.0.1:8000/api/addProductos', data);
   }
 
-  getProductobyID(id: any){
+  
+  getProductobyID(id: Producto){
     return this.http.get('http://127.0.0.1:8000/api/productosByID/' + id);
   }
 
-  deleteProductos(id: any){
+  deleteProductos(id: Producto){
     return this.http.delete('http://127.0.0.1:8000/api/deleteProductos/'+id);
   }
 
-  updateProductos(id: any,data: any){
+  updateProductos(id: Producto,data: Producto){
     return this.http.put('http://127.0.0.1:8000/api/updateProductos/'+id, data);
   }
 }

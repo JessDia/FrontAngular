@@ -21,4 +21,8 @@ export class UsuarioService {
     //return this.listaUsuarios.slice();
     return data;
   }
+
+  deleteUsuario(id: Usuario){
+    return this.http.delete('http://127.0.0.1:8000/api/User/delete/'+id);
+  }
 }

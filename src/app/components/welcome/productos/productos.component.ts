@@ -16,7 +16,7 @@ import { AlertasService } from 'src/app/services/alertas.service';
 })
 export class ProductosComponent implements OnInit {
 
-  productos: Producto[] = []
+  //productos: Producto[] = []
 
   displayedColumns: string[] = ['id', 'nombre', 'precio', 'stock', 'acciones'];
   dataSource!: MatTableDataSource<any>;
@@ -33,16 +33,17 @@ export class ProductosComponent implements OnInit {
     console.log('llega aqui'); //prueba 
   }
 
+  //Funcion para listar los productos
   traerProductos(){
     this._productoService.getProductos().subscribe((data: any) => {
-    //console.log(data.productos);
+    //console.log(data.productos); //Prueba
     this.dataSource = new MatTableDataSource(data.productos);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     });
   }
 
-  
+  //Editar
   editProductos(id: any){
     this.route.navigate(['/welcome/edit-producto/', id]);
     console.log(id, 'Esta es el id a editar');
@@ -61,16 +62,12 @@ export class ProductosComponent implements OnInit {
         });
       }
     })
-    
   }
-
-  
-
   //cuando se inicialice el ciclo de vida le asignamos al datasource el paginador
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-  }
+  // ngAfterViewInit() {
+  //   // this.dataSource.paginator = this.paginator;
+  //   // this.dataSource.sort = this.sort;
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

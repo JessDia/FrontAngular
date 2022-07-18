@@ -5,9 +5,9 @@ export interface Producto {
     stock: number;
 }
 
-export interface Producto2 {
-    id?: any;
-    nombre: any;
-    precio: any;
-    stock: any;
-}
+// export interface Producto2 {
+//     id?: any;
+//     nombre: any;
+//     precio: any;
+//     stock: any;
+// }

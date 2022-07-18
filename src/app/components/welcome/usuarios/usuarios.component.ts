@@ -4,7 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ListUser, Usuario } from 'src/app/Interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
-//import { Observable } from 'rxjs';
+import { AlertasService } from 'src/app/services/alertas.service';
+
 
 
 @Component({
@@ -14,7 +15,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class UsuariosComponent implements OnInit {
 
-  usuarios: ListUser[] = [];
+  //usuarios: ListUser[] = [];
 
   displayedColumns: string[] = ['id', 'name', 'lastname', 'email', 'actions'];
   dataSource!: MatTableDataSource<any>;
@@ -22,15 +23,16 @@ export class UsuariosComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  //Inyectamos el servicio de listar usuarios
-  constructor(private _UsuarioService: UsuarioService) { }
+  
+  constructor(private _UsuarioService: UsuarioService,
+    private alertas: AlertasService) { }
 
   ngOnInit(): void {
-    //Cuando inicialicemos el componente llamaremos al metodo de traer usuarios
     this.traerUsuarios();
   }
 
-//Metodo para traer usuario
+
+  //Leer registros
   traerUsuarios(){
       this._UsuarioService.getUsuario().subscribe((data: any)=>{
       //console.log(data, ' hola'); prueba
@@ -41,16 +43,26 @@ export class UsuariosComponent implements OnInit {
     });
   }
 
-  //Metodo para eliminar usuario
-  eliminarUsuario(){
-    //Eliminar usuario
+  
+  eliminarUsuario(id: any){
+    this.alertas.Confirmacion('¿Esta seguro que desea eliminar este usuario?').then(result =>{
+      if(!result.isConfirmed){
+        return;
+      }else{
+        this._UsuarioService.deleteUsuario(id).subscribe(data =>{
+          console.log('Producto eliminado');
+          this.traerUsuarios();
+          this.alertas.Exitoso('Usuario eliminado correctamente');
+        });
+      }
+    })
   }
 
   //Metodo del paginador
-  ngAfterViewInit() {
-    //this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
-  }
+  // ngAfterViewInit() {
+  //   //this.dataSource.paginator = this.paginator;
+  //   //this.dataSource.sort = this.sort;
+  // }
 
   //Metodo del filtro
   applyFilter(event: Event) {

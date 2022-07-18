@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertasService } from 'src/app/services/alertas.service';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Producto } from 'src/app/Interfaces/producto';
-import { Producto2 } from 'src/app/Interfaces/producto';
 
 @Component({
   selector: 'app-crear-producto',
@@ -45,13 +44,10 @@ export class CrearProductoComponent implements OnInit {
         })
     }else{
       console.log('formulario para agregar');
-      
     }
 
     
   }
-
- 
 
   updateProductos(){
     this._productService.updateProductos(this.id,this.productos.productos).subscribe(data =>{
@@ -69,7 +65,6 @@ export class CrearProductoComponent implements OnInit {
     if(this.id){
       this.updateProductos();
     }else{
-      
     }
   }
 
@@ -77,10 +72,7 @@ export class CrearProductoComponent implements OnInit {
     this._productService.getProductobyID(this.id).subscribe(data =>{
       console.log('datos id', data);
       this.data = data;
-      
       this.productos = data;
-      
-      
       console.log(this.productos,'si se guardan los productos');
       
       

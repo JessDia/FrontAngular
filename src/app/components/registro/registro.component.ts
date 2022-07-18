@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { AlertasService } from 'src/app/services/alertas.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,15 +15,18 @@ export class RegistroComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   getInto = false;
   
-  constructor(private formb: FormBuilder, private _snackBar: MatSnackBar, private router: Router,
-    private authS: AuthService) { 
+  constructor(private formb: FormBuilder, 
+    private _snackBar: MatSnackBar, 
+    private router: Router,
+    private authS: AuthService,
+    private alertas: AlertasService) { 
   }
 
   ngOnInit(): void {
     this.form = this.formb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     })
   }
@@ -30,20 +34,17 @@ export class RegistroComponent implements OnInit {
   Ingresar(){
     this.authS.register(this.form.value).subscribe(data =>{
       console.log('registro',data);
-    })
-    // console.log(this.form);
-    // const nombre = this.form.value.nombre;
-    // const apellido = this.form.value.apellido;
-    // const correo = this.form.value.correo;
-    // const contraseña = this.form.value.contraseña;
-
-    // console.log(nombre);
-    // console.log(apellido);
-    // console.log(correo);
-    // console.log(contraseña);
-
+      this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');
+      this.router.navigate(['/login']);
+    });
+    console.log(this.form, 'El usuario se esta registrando');
     
-    
+
+    // if(this.form){
+    //   this.alertas.Exitoso('Usuario registrado');
+    // }else{
+    //   this.alertas.error('Hubo un error con el registro, contacte al administrador');
+    // }
   }
 
 

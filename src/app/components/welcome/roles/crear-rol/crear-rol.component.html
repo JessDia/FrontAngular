@@ -3,8 +3,36 @@
         <span>Crear nuevo rol</span>
     </mat-toolbar>
 
-    <mat-card class="style">
-        <form>
+    <!-- <mat-card class="style">
+        <form [formGroup]="form" (ngSubmit)="Actividad()">
+            <mat-grid-list cols="3" rowHeight="70px">
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label >Nombre del producto</mat-label>
+                    <input matInput formControlName="nombre" autocomplete="off">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="2" [rowspan]="4">
+                    <img class="img" src="./assets/img/new.png">
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label >Precio</mat-label>
+                    <input matInput formControlName="precio" autocomplete="off">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label >Stock</mat-label>
+                    <input matInput formControlName="stock"  autocomplete="off">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button class="btn" mat-raised-button routerLink="/welcome/productos">Cancelar</button>
+                    <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid">{{ titulo_boton}}</button>
+                </mat-grid-tile>
+            </mat-grid-list>
+            
             <mat-grid-list cols="4" rowHeight="100px">
                 <mat-grid-tile
                     *ngFor="let tile of tiles"
@@ -15,5 +43,5 @@
                 </mat-grid-tile>
             </mat-grid-list>
         </form>
-    </mat-card>
+    </mat-card> -->
 </div>

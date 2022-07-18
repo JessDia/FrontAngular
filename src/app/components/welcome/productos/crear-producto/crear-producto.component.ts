@@ -12,6 +12,8 @@ import { Producto } from 'src/app/Interfaces/producto';
 })
 export class CrearProductoComponent implements OnInit {
 
+  //Componente para editar y actualizar producto
+  
   public form: FormGroup = new FormGroup({});
   id: any;
   titulo = 'crear producto';

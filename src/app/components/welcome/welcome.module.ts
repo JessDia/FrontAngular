@@ -14,6 +14,7 @@ import { CrearProductoComponent } from './productos/crear-producto/crear-product
 import { CrearRolComponent } from './roles/crear-rol/crear-rol.component';
 import { AddProductosComponent } from './productos/add-productos/add-productos.component';
 import { CardsComponent } from './productos/cards/cards.component';
+import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CardsComponent } from './productos/cards/cards.component';
     CrearRolComponent,
     AddProductosComponent,
     CardsComponent,
+    EditarUsuarioComponent,
     
   ],
   imports: [

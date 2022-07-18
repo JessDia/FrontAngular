@@ -39,7 +39,7 @@
                     <a class="cursor search" matTooltip="Ver usuario">
                         <mat-icon>search</mat-icon>
                     </a>
-                    <a class="cursor edit" matTooltip="Editar usuario">
+                    <a class="cursor edit" matTooltip="Editar usuario" (click)="editarUsuario(element.id)">
                         <mat-icon>edit</mat-icon>
                     </a>
                     <a class="cursor delete" (click)="eliminarUsuario(element.id)" matTooltip="Eliminar usuario">

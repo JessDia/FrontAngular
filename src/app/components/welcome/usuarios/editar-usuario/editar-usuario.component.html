@@ -1,6 +1,6 @@
 <div class="container">
     <mat-toolbar>
-        <span>Crear un nuevo usuario</span>
+        <span>Actualizar datos de usuario</span>
     </mat-toolbar>
     <mat-card class="style">
         <form  [formGroup]="form" (ngSubmit)="Actividad()">
@@ -8,7 +8,7 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1" >
                     <mat-form-field class="width">
                         <mat-label>Nombre</mat-label>
-                        <input matInput formControlName="name">
+                        <input matInput formControlName="name" [(ngModel)]="usuarios.users.name">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="3" [rowspan]="5">
@@ -17,24 +17,18 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="width">
                         <mat-label>Apellido</mat-label>
-                        <input matInput formControlName="lastname">
+                        <input matInput formControlName="lastname" [(ngModel)]="usuarios.users.lastname">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="width">
                         <mat-label>Correo electronico</mat-label>
-                        <input matInput formControlName="email">
-                    </mat-form-field>
-                </mat-grid-tile>
-                <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="width">
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput formControlName="password">
+                        <input matInput formControlName="email" [(ngModel)]="usuarios.users.email">
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <button class="button" routerLink="/welcome/usuarios" mat-raised-button>Cancelar</button>
-                    <button type="submit" [disabled]="form.invalid" class="button" mat-raised-button color="primary">Crear</button>
+                    <button type="submit" [disabled]="form.invalid" class="button" mat-raised-button color="primary">Actualizar</button>
                 </mat-grid-tile>
             </mat-grid-list>
             

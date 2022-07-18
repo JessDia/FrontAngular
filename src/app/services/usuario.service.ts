@@ -18,11 +18,24 @@ export class UsuarioService {
 
   getUsuario(){
     const data = this.http.get('http://127.0.0.1:8000/api/User/get');
-    //return this.listaUsuarios.slice();
     return data;
   }
 
   deleteUsuario(id: Usuario){
     return this.http.delete('http://127.0.0.1:8000/api/User/delete/'+id);
   }
+
+  getUserByID(id: Usuario){
+    return this.http.get('http://127.0.0.1:8000/api/User/show/'+id);
+  }
+
+  createUser(data: Usuario){
+    return this.http.post('http://127.0.0.1:8000/api/User/create', data);
+  }
+
+  updateUser(id: Usuario, data: Usuario){
+    return this.http.put('http://127.0.0.1:8000/api/User/update/'+id,data);
+  }
+
+
 }

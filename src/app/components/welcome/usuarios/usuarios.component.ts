@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ListUser, Usuario } from 'src/app/Interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertasService } from 'src/app/services/alertas.service';
+import { Router } from '@angular/router';
 
 
 
@@ -25,7 +26,8 @@ export class UsuariosComponent implements OnInit {
 
   
   constructor(private _UsuarioService: UsuarioService,
-    private alertas: AlertasService) { }
+    private alertas: AlertasService,
+    private route: Router) { }
 
   ngOnInit(): void {
     this.traerUsuarios();
@@ -41,6 +43,11 @@ export class UsuariosComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  editarUsuario(id: number){
+    this.route.navigate(['/welcome/editar-usuario/',id]);
+    console.log(id, 'Esta es el id a editar');
   }
 
   

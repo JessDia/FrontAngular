@@ -7,6 +7,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { CrearRolComponent } from './roles/crear-rol/crear-rol.component';
 import { RolesComponent } from './roles/roles.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
+import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { WelcomeComponent } from './welcome.component';
 
@@ -19,7 +20,8 @@ const routes: Routes = [
     {path: 'crear-usuario', component: CrearUsuarioComponent},
     {path: 'crear-rol', component: CrearRolComponent},
     {path: 'crear-producto', component: AddProductosComponent},
-    {path: 'edit-producto/:id', component: CrearProductoComponent}
+    {path: 'edit-producto/:id', component: CrearProductoComponent},
+    {path: 'editar-usuario/:id', component: EditarUsuarioComponent}
 
   ]}
 

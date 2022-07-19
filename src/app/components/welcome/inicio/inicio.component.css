@@ -1,8 +1,15 @@
-.example-card {
-    max-width: 400px;
+  .example-card {
+    max-width: 250px;
+    text-align: right;
+  
   }
   
   .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url("https://cdn-icons-png.flaticon.com/512/45/45332.png");
     background-size: cover;
   }
+
+  
+
+
+

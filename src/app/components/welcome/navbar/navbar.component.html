@@ -7,7 +7,7 @@
     <button mat-button routerLink="/welcome/roles">Roles</button>
     <span class="example-spacer"></span>
     <button routerLink="/logout" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>logout</mat-icon>
+        <mat-icon (click)="logout()">logout</mat-icon>
     </button>
 </mat-toolbar>
 

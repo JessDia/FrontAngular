@@ -12,7 +12,7 @@ export class AlertasService {
       title: msn,
       icon: 'error',
       showConfirmButton: false,
-      timer: 1500
+      timer: 3000
     })
   }
 
@@ -22,7 +22,7 @@ export class AlertasService {
       icon: 'success',
       title: msn,
       showConfirmButton: false,
-      timer: 2000
+      timer: 3000
     })
   }
 

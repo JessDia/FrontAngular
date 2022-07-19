@@ -22,6 +22,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
+import { BnNgIdleService } from 'bn-ng-idle';
+import { CurrencyPipe } from '@angular/common';
 
 
 @NgModule({
@@ -64,7 +66,7 @@ import { RouterModule } from '@angular/router';
     MatGridListModule,
     HttpClientModule,
     FormsModule,
-  
-  ]
+  ],
+  providers:[BnNgIdleService,CurrencyPipe]
 })
 export class SharedModule { }

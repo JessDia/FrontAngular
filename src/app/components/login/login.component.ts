@@ -14,6 +14,9 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent implements OnInit {
 
+  rol: any;
+  role = (localStorage.getItem('role'));
+
   public form: FormGroup = new FormGroup({});
 
   getInto = false;
@@ -40,6 +43,15 @@ export class LoginComponent implements OnInit {
       this._tokenService.manejarDatos(data.authorisation.token);
 
       localStorage.setItem('user',JSON.stringify(data));
+      localStorage.setItem('estado',JSON.stringify(data.status));
+      localStorage.setItem('role',JSON.stringify(data.user.roles[0].id));
+      console.log(this.role,'este es el rol --');
+      
+      // this.rol = localStorage.getItem('role');
+
+      // console.log(this.rol,'este es el rol');
+
+      
       // localStorage.setItem('token',JSON.stringify(data.authorisation.token));
       //console.log(localStorage.setItem('user',JSON.stringify(data)))
 

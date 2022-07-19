@@ -17,11 +17,12 @@ export class NavbarComponent implements OnInit {
     private route: Router) { }
 
   ngOnInit(): void {
-    //this.token = localStorage.getItem('token');
+    this.token = localStorage.getItem('auth_token');
   }
 
   logout(){
-    localStorage.removeItem('token');
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('user');
     this.route.navigate(['/login']);
     console.log('se Cierra sesión');
   }

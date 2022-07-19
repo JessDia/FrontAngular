@@ -11,17 +11,28 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  // users: any;
   //Registro
   register(usuario: Registro): Observable<any> {
     return this.http.post('http://127.0.0.1:8000/api/auth/register', usuario);
   }
   //Login
   loginUser(usuario: Usuario): Observable<Request> {
-    return this.http.post<Request>('http://127.0.0.1:8000/api/auth/login', usuario);
+    return  this.http.post<Request>('http://127.0.0.1:8000/api/auth/login', usuario);
+   
   }
 
+  // getUser(){
+  //   return this.users.user;
+  // }
+
+  // getRol(){
+  //   return this.users.user.roles.name;
+  // }
+
+
   logout(token: Token){
-    return this.http.post('http://127.0.0.1:8000/api/auth/logout',token);
+    return this.http.post('http://127.0.0.1:8000/api/auth/logout', token);
   }
 
   //Info del usuario 

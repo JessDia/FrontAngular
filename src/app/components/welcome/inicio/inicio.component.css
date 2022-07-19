@@ -9,7 +9,14 @@
     background-size: cover;
   }
 
-  
+  .example-full-width{
+    width: 60px;
+  }
+
+  .input{
+    align-content:center;
+  }
+
 
 
 

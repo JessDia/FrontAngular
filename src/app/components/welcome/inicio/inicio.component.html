@@ -1,6 +1,8 @@
 <div class="container">
     <mat-toolbar>
-        <span>Pagina de inicio PENDIENTE POR MODIFICAR LAS CARDS DE PRODUCTOS</span>
+        <span>Pagina de inicio</span>
+        <div class="example-spacer"></div>
+        <button  mat-stroked-button color="primary">Ver datos de usuario</button>
     </mat-toolbar>
 </div>
 <div class="container" *ngFor="let p of producto">
@@ -11,11 +13,13 @@
           <mat-card-subtitle>Cantidad disponible: {{p.stock}}</mat-card-subtitle>
           <mat-card-subtitle>Precio: {{p.precio}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content>
-        </mat-card-content>
         <mat-card-actions>
-          
-          <button class="btn" mat-stroked-button color="primary">Comprar</button>
+          <mat-form-field class="example-full-width">
+            <mat-label>Cantidad</mat-label>
+            <input class="input" matInput placeholder="Ejm. 2" autocomplete="off">
+          </mat-form-field>
+          <button class="btn" mat-stroked-button color="primary" (click)="comprar(p,{cantidad:1})">Comprar</button>
+
         </mat-card-actions>
       </mat-card>
 </div>

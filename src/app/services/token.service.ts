@@ -5,6 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class TokenService {
 
+  prueba_token: boolean = false;
+
   private direcciones = {
     login: 'http://127.0.0.1:8000/api/auth/login',
     register: 'http://127.0.0.1:8000/api/auth/register'
@@ -16,6 +18,8 @@ export class TokenService {
     localStorage.setItem('auth_token', token);
   }
   obtenerToken(){
+    
+    //console.log(JSON.stringify(localStorage.getItem('user')));
     return localStorage.getItem('auth_token');
   }
 

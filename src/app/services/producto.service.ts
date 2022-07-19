@@ -32,4 +32,9 @@ export class ProductoService {
   updateProductos(id: Producto,data: Producto){
     return this.http.put('http://127.0.0.1:8000/api/updateProductos/'+id, data);
   }
+
+  comprarProducto(id: any,data: any){
+    return this.http.put('http://127.0.0.1:8000/api/comprar/'+id,data);
+  }
+  
 }

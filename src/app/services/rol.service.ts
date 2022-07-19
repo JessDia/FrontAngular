@@ -8,6 +8,9 @@ import { Rol } from '../Interfaces/rol';
 })
 export class RolService {
 
+  roleAs: any;
+  isLogin: any;
+
   constructor(private http: HttpClient) { }
 
   CreateRole(data: Producto){
@@ -29,6 +32,21 @@ export class RolService {
 
   getRolByID(id: Rol){
     return this.http.get('http://127.0.0.1:8000/api/show/role/'+id);
+  }
+
+  getRoles(){
+    this.roleAs = localStorage.getItem('role');
+    return this.roleAs;
+  }
+
+  isLoggin(){
+    const loggin = localStorage.getItem('user');
+    if(loggin == 'success'){
+      this.isLogin = true;
+    }else{
+      this.isLogin = false;
+    }
+    return this.isLogin;
   }
 
 }

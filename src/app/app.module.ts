@@ -6,17 +6,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './sharedModule/shared/shared.module';
 
+
 //Componentes
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptor/AuthInterceptor';
 import { RouterModule } from '@angular/router';
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -29,17 +25,17 @@ import { RouterModule } from '@angular/router';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    RouterModule
-    
+    RouterModule,
 
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     }
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,13 +25,11 @@ export class InicioComponent implements OnInit {
   
   ngOnInit(): void {
 
-    // if(this._authService.getUser().subscribe((data:any)=>{
-    // console.log(data,'user');
-    // }))
 
     this.auth.PerfilUser().subscribe(data =>{
-    console.log(data);
+    console.log(data,'Aqui traemos info delusuario');
     });
+
     this.getProductos();
 
     //Probando para ingresar la cantidad
@@ -49,11 +47,13 @@ export class InicioComponent implements OnInit {
   
   }
 
-  comprar(id: any,data: any){
-    this._productoService.comprarProducto(id.id,data).subscribe(data =>{
+  comprar(id:any){
+    this._productoService.comprarProducto(id,this.form.value).subscribe(data =>{
       console.log('Aqui generamos compra',data);
       this.alertas.Exitoso('Compra exitosa, recuerde confirmar datos de envio');
       this.getProductos();
+      this.form.reset();
+      
       //validar stock no sea mayor a stock disponible.
     });
   }

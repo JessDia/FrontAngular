@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertasService } from 'src/app/services/alertas.service';
 
+
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -27,11 +29,16 @@ export class RegistroComponent implements OnInit {
       name: ['', Validators.required],
       lastname: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     })
+    this.getEmail();
+  }
+  getEmail(){
+    return this.form.get('email');
   }
 
   Ingresar(){
+    
     this.authS.register(this.form.value).subscribe(data =>{
       console.log('registro',data);
       this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');

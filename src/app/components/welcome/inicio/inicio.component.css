@@ -1,7 +1,9 @@
   .example-card {
     max-width: 250px;
     text-align: right;
-  
+      margin-left: 20px;
+      margin-right: 100px;
+      margin-top: 5px;
   }
   
   .example-header-image {
@@ -13,8 +15,8 @@
     width: 60px;
   }
 
-  .input{
-    align-content:center;
+  input{
+    text-align: center;
   }
 
 

@@ -41,9 +41,6 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td class="icon" mat-cell *matCellDef="let element">
-                    <a class="cursor search" matTooltip="Ver usuario">
-                        <mat-icon>search</mat-icon>
-                    </a>
                     <a class="cursor edit" matTooltip="Editar usuario" (click)="editarUsuario(element.id)">
                         <mat-icon>edit</mat-icon>
                     </a>

@@ -15,7 +15,7 @@ export class ProductoService {
     return data;
   }
 
-  //Metodo para agregar producto
+  
   agregarProducto(data: Producto){
     return this.http.post('http://127.0.0.1:8000/api/addProductos', data);
   }
@@ -35,6 +35,10 @@ export class ProductoService {
 
   comprarProducto(id: any,data: any){
     return this.http.put('http://127.0.0.1:8000/api/comprar/'+id,data);
+  }
+
+  existe(nombre: string):any{
+    return this.http.post('http://127.0.0.1:8000/api/producto/existe',{nombre:nombre});
   }
   
 }

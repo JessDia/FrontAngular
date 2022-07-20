@@ -14,6 +14,7 @@ export class AddProductosComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
   titulo = 'crear producto';
   titulo_boton = 'Crear';
+  existe= 0;
 
   constructor(private fb: FormBuilder, 
     private _productService: ProductoService, 
@@ -29,15 +30,39 @@ export class AddProductosComponent implements OnInit {
   }
 
   crearProducto(){
-    this._productService.agregarProducto(this.form.value).subscribe(data =>{
-      console.log(data);
-      this.route.navigate(['/welcome/productos']);
-      if(data){
-        this.alertas.Exitoso('Producto creado con exito');
-      }else{
-        this.alertas.error('Error al crear producto');
+
+    //Validaciones
+    if(this.form.value.nombre.length > 50){
+      this.alertas.error('excede el numero de letras permitidas');
+      return false;
+    }
+
+    if(this.form.value.precio.length < 3){
+      this.alertas.error('en el campo precio debe ingresar minimo 3 numeros');
+      return false;
+    }
+
+    this._productService.existe(this.form.value.nombre).subscribe((existe:any)=>{
+      this.existe = existe.status;
+
+      if(this.existe==1){
+        this.alertas.error('Este producto ya existe');
+        this.form.reset();
+        return false;
       }
+
+        this._productService.agregarProducto(this.form.value).subscribe(data =>{
+          console.log(data);
+          this.route.navigate(['/welcome/productos']);
+          if(data){
+            this.alertas.Exitoso('Producto creado con exito');
+          }else{
+            this.alertas.error('Error al crear producto');
+          }
+        })
     })
+  
+    
     //console.log(this.form);
   }
 

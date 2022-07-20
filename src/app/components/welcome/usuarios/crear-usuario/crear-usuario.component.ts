@@ -43,6 +43,7 @@ export class CrearUsuarioComponent implements OnInit {
       this.alertas.error('Debe ingresar un correo valido');
       return false;
     }
+    
     if(this.form.value.password.length < 6){
       this.alertas.error('La contraseña debe tener más de 6 digitos');
       return false;

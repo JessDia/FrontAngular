@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AlertasService } from 'src/app/services/alertas.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenService } from 'src/app/services/token.service'; 
 
@@ -22,8 +23,12 @@ export class LoginComponent implements OnInit {
   getInto = false;
   
 
-  constructor(private formb: FormBuilder, private _snackBar: MatSnackBar, private router: Router, 
-    private authS: AuthService, private _tokenService: TokenService) { 
+  constructor(private formb: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private router: Router, 
+    private authS: AuthService,
+    private _tokenService: TokenService,
+    private alertas: AlertasService) { 
     
   }
 
@@ -35,7 +40,10 @@ export class LoginComponent implements OnInit {
   }
 
   Ingresar(){
-    //invocamos el servicios
+    if(this.form.value.password.length < 6){
+      this.alertas.error('La contraseña debe tener más de 6 digitos');
+      return false;
+    }
     this.authS.loginUser(this.form.value).subscribe((data:any) =>{
       //console.log(data);
 
@@ -45,16 +53,8 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user',JSON.stringify(data));
       localStorage.setItem('estado',JSON.stringify(data.status));
       localStorage.setItem('role',JSON.stringify(data.user.roles[0].id));
-      console.log(this.role,'este es el rol --');
+      //console.log(this.role,'este es el rol --');
       
-      // this.rol = localStorage.getItem('role');
-
-      // console.log(this.rol,'este es el rol');
-
-      
-      // localStorage.setItem('token',JSON.stringify(data.authorisation.token));
-      //console.log(localStorage.setItem('user',JSON.stringify(data)))
-
       if(data.authorisation.token)
       {
         this.autenticate();

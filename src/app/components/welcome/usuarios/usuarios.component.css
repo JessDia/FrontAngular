@@ -23,7 +23,9 @@ th{
 
 .edit{
     color: #1f516f;
+    align-items: center;
 }
 .delete{
     color: #e15639;
+    align-items: center;
 }

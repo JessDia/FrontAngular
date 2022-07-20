@@ -16,7 +16,6 @@ import { AddProductosComponent } from './productos/add-productos/add-productos.c
 import { CardsComponent } from './productos/cards/cards.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { UpdateRolComponent } from './roles/update-rol/update-rol.component';
-import { CambiarRolComponent } from './usuarios/cambiar-rol/cambiar-rol.component';
 
 
 @NgModule({
@@ -34,7 +33,7 @@ import { CambiarRolComponent } from './usuarios/cambiar-rol/cambiar-rol.componen
     CardsComponent,
     EditarUsuarioComponent,
     UpdateRolComponent,
-    CambiarRolComponent,
+  
 
     
   ],

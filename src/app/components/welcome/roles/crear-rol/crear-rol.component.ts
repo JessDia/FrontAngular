@@ -13,6 +13,7 @@ import { RolService } from 'src/app/services/rol.service';
 export class CrearRolComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({});
+  existe = 0;
 
 
   constructor(
@@ -29,11 +30,22 @@ export class CrearRolComponent implements OnInit {
   }
 
   crearRol(){
-    this._rolService.CreateRole(this.form.value).subscribe(data =>{
-      console.log(data,'Estamos creando el rol');
-      this.alertas.Exitoso('El nuevo rol ha sido creado');
-      this.route.navigate(['/welcome/roles']);
-    })
+    this._rolService.existeRol(this.form.value.name).subscribe((existe:any)=>{
+      this.existe = existe.status;
+      if(this.existe==1){
+        this.alertas.error('Este rol ya existe');
+        this.form.reset();
+        return false;
+      }
+
+      this._rolService.CreateRole(this.form.value).subscribe(data =>{
+        console.log(data,'Estamos creando el rol');
+        this.alertas.Exitoso('El nuevo rol ha sido creado');
+        this.route.navigate(['/welcome/roles']);
+      });
+
+    });
+    
   }
 
   Actividad(){

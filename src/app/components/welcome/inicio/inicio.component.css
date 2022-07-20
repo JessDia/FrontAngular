@@ -1,9 +1,7 @@
   .example-card {
     max-width: 250px;
     text-align: right;
-      margin-left: 20px;
-      margin-right: 100px;
-      margin-top: 5px;
+    align-items: center;
   }
   
   .example-header-image {

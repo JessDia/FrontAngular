@@ -19,7 +19,7 @@ export class CrearUsuarioComponent implements OnInit {
     private _usuarioService: UsuarioService,
     private route: Router,
     private alertas: AlertasService,
-    private _authService: AuthService,
+    //private _authService: AuthService,
     ) {
     
   }

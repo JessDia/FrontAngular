@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertasService } from 'src/app/services/alertas.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 
 
@@ -16,12 +17,14 @@ export class RegistroComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({});
   getInto = false;
+  existe= 0;
   
   constructor(private formb: FormBuilder, 
     private _snackBar: MatSnackBar, 
     private router: Router,
     private authS: AuthService,
-    private alertas: AlertasService) { 
+    private alertas: AlertasService,
+    private _usuarioService: UsuarioService) { 
   }
 
   ngOnInit(): void {
@@ -31,30 +34,44 @@ export class RegistroComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     })
-    this.getEmail();
+    // this.getEmail();
   }
-  getEmail(){
-    return this.form.get('email');
-  }
+  // getEmail(){
+  //   return this.form.get('email');
+  // }
 
   Ingresar(){
-    // if (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.form.value.email)){
-    //   this.alertas.error('Debe ingresar un correo valido');
-    //   return false;
-    // }
-    this.authS.register(this.form.value).subscribe(data =>{
-      console.log('registro',data);
-      this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');
-      this.router.navigate(['/login']);
-    });
-    console.log(this.form, 'El usuario se esta registrando');
-    
 
-    // if(this.form){
-    //   this.alertas.Exitoso('Usuario registrado');
-    // }else{
-    //   this.alertas.error('Hubo un error con el registro, contacte al administrador');
-    // }
+    //---Validaciones
+    const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (!emailRegex.test(this.form.value.email)) {
+      this.alertas.error('Debe ingresar un correo valido');
+      return false;
+    }
+    
+    if(this.form.value.password.length < 6){
+      this.alertas.error('La contraseña debe tener más de 6 digitos');
+      return false;
+    }
+
+    this._usuarioService.existe(this.form.value.email).subscribe((existe:any)=>{
+      this.existe = existe.status;
+      if(this.existe==1){
+        this.alertas.error('Este correo ya existe');
+        this.form.reset();
+        return false;
+      }
+
+      this.authS.register(this.form.value).subscribe(data =>{
+        console.log('registro',data);
+        this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');
+        this.router.navigate(['/login']);
+      });
+
+    })
+
+    
+    console.log(this.form, 'El usuario se esta registrando');
   }
 
 

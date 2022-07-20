@@ -40,7 +40,6 @@ export class RolesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(data.rol);
     this.dataSource.paginator = this.paginator;
     });
-    //this.dataSource = new MatTableDataSource(this.rol);
   }
 
   editarRol(id: number){
@@ -61,11 +60,6 @@ export class RolesComponent implements OnInit {
       }
     })
   }
-
-  //cuando se inicialice el ciclo de vida le asignamos al datasource el paginador
-  // ngAfterViewInit() {
-    
-  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

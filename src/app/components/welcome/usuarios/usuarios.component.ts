@@ -15,8 +15,6 @@ import { Router } from '@angular/router';
 })
 export class UsuariosComponent implements OnInit {
 
-  //usuarios: ListUser[] = [];
-
   displayedColumns: string[] = ['id', 'name', 'lastname', 'email', 'roles', 'actions'];
   dataSource!: MatTableDataSource<any>;
 

@@ -11,7 +11,6 @@ export class ProductoService {
 
   getProductos(){
     const data = this.http.get('http://127.0.0.1:8000/api/productos');
-    //console.log(data); prueba
     return data;
   }
 

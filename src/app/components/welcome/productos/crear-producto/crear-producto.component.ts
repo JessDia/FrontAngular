@@ -86,8 +86,6 @@ export class CrearProductoComponent implements OnInit {
       this.data = data;
       this.productos = data;
       console.log(this.productos,'si se guardan los productos');
-      
-      
     })
   }
 

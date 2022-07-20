@@ -36,8 +36,6 @@ export class CrearUsuarioComponent implements OnInit {
 
   async crearUsuario(){
   
-    //console.log(this.form.value.password.length);
-    
     const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     if (!emailRegex.test(this.form.value.email)) {
       this.alertas.error('Debe ingresar un correo valido');
@@ -58,7 +56,6 @@ export class CrearUsuarioComponent implements OnInit {
         }
 
         this._usuarioService.createUser(this.form.value).subscribe(data =>{
-          
           this.alertas.Exitoso('Usuario creado con exito');
           this.route.navigate(['/welcome/usuarios']);
         })

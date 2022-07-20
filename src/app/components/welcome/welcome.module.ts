@@ -13,7 +13,6 @@ import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.co
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
 import { CrearRolComponent } from './roles/crear-rol/crear-rol.component';
 import { AddProductosComponent } from './productos/add-productos/add-productos.component';
-import { CardsComponent } from './productos/cards/cards.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { UpdateRolComponent } from './roles/update-rol/update-rol.component';
 
@@ -30,7 +29,6 @@ import { UpdateRolComponent } from './roles/update-rol/update-rol.component';
     CrearProductoComponent,
     CrearRolComponent,
     AddProductosComponent,
-    CardsComponent,
     EditarUsuarioComponent,
     UpdateRolComponent,
   

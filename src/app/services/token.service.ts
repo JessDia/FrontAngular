@@ -18,8 +18,6 @@ export class TokenService {
     localStorage.setItem('auth_token', token);
   }
   obtenerToken(){
-    
-    //console.log(JSON.stringify(localStorage.getItem('user')));
     return localStorage.getItem('auth_token');
   }
 

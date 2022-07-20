@@ -6,13 +6,6 @@ import { Usuario } from '../Interfaces/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-
- // listaUsuarios: Usuario[] = [
-    // {id: 1, name: 'Jessica', lastname: 'Diaz', email: 'jp@prueba.com', password: 123456},
-    // {id: 2, name: 'Duvan', lastname: 'Rodriguez', email: 'duvan@prueba.com', password: 123456},
-    // {id: 3, name: 'Jessica', lastname: 'Diaz', email: 'jp@prueba.com', password: 123456},
-  
-  //];
   
   constructor(private http: HttpClient) { }
 

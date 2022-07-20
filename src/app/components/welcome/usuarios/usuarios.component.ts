@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ListUser, Usuario } from 'src/app/Interfaces/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AlertasService } from 'src/app/services/alertas.service';
 import { Router } from '@angular/router';
@@ -37,9 +36,7 @@ export class UsuariosComponent implements OnInit {
   //Leer registros
   traerUsuarios(){
       this._UsuarioService.getUsuario().subscribe((data: any)=>{
-      console.log(data, ' hola'); 
       this.dataSource = new MatTableDataSource(data.users);
-      
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
@@ -64,12 +61,6 @@ export class UsuariosComponent implements OnInit {
       }
     })
   }
-
-  //Metodo del paginador
-  // ngAfterViewInit() {
-  //   //this.dataSource.paginator = this.paginator;
-  //   //this.dataSource.sort = this.sort;
-  // }
 
   //Metodo del filtro
   applyFilter(event: Event) {

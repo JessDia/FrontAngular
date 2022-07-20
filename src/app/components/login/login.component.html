@@ -3,23 +3,21 @@
         <mat-spinner *ngIf="getInto" class="spinner" diameter="40"></mat-spinner>
         <form *ngIf="!getInto" [formGroup]="form" (ngSubmit)="Ingresar()">
             <img class="img" src="./assets/img/user.png">
-    <h1>Login</h1>
-    <mat-form-field class="width"  appearance="fill">
-        <mat-label>Correo</mat-label>
-        <input matInput autocomplete="off" formControlName="email">
-    </mat-form-field>
-    <mat-form-field class="width"  appearance="fill">
-        <mat-label>Contraseña</mat-label>
-        <input type="password" matInput formControlName="password">
-    </mat-form-field>
-    <br>
-    <button class="width button" mat-flat-button color="primary" [disabled]="form.invalid">Ingresar</button>
-    <br>
-    <br>
-    <p>¿No tiene cuenta?
-        
-        <a href="registro">Crear cuenta</a>
-    </p>
+            <h1>Login</h1>
+            <mat-form-field class="width"  appearance="fill">
+                <mat-label>Correo</mat-label>
+                <input matInput autocomplete="off" formControlName="email">
+            </mat-form-field>
+            <mat-form-field class="width"  appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="password">
+            </mat-form-field>
+            <br>
+            <button class="width button" mat-flat-button color="primary" [disabled]="form.invalid">Ingresar</button>
+            <br><br>
+            <p>¿No tiene cuenta?
+                <a href="registro">Crear cuenta</a>
+            </p>
         </form>
     </div>
 </div>

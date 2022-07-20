@@ -50,7 +50,7 @@ export class CrearUsuarioComponent implements OnInit {
     }
 
     this._usuarioService.existe(this.form.value.email).subscribe((existe:any) =>{
-      //console.log('entro!',existe);
+  
       this.existe = existe.status;
       if(this.existe==1){
         this.alertas.error('Este email ya existe');
@@ -58,7 +58,7 @@ export class CrearUsuarioComponent implements OnInit {
         }
 
         this._usuarioService.createUser(this.form.value).subscribe(data =>{
-          //console.log(data);
+          
           this.alertas.Exitoso('Usuario creado con exito');
           this.route.navigate(['/welcome/usuarios']);
         })

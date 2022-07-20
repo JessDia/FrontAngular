@@ -23,8 +23,7 @@ export class RegistroComponent implements OnInit {
     private _snackBar: MatSnackBar, 
     private router: Router,
     private authS: AuthService,
-    private alertas: AlertasService,
-    private _usuarioService: UsuarioService) { 
+    private alertas: AlertasService) { 
   }
 
   ngOnInit(): void {
@@ -34,14 +33,11 @@ export class RegistroComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
     })
-    // this.getEmail();
   }
-  // getEmail(){
-  //   return this.form.get('email');
-  // }
+  
 
   Ingresar(){
-
+    
     //---Validaciones
     const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     if (!emailRegex.test(this.form.value.email)) {
@@ -54,24 +50,21 @@ export class RegistroComponent implements OnInit {
       return false;
     }
 
-    this._usuarioService.existe(this.form.value.email).subscribe((existe:any)=>{
-      this.existe = existe.status;
-      if(this.existe==1){
-        this.alertas.error('Este correo ya existe');
-        this.form.reset();
-        return false;
-      }
+    // this.authS.existe(this.form.value.email).subscribe((existe:any)=>{
+      
+    //   this.existe = existe.status;
+    //   if(this.existe==1){
+    //     this.alertas.error('Este correo ya existe');
+    //     this.form.reset();
+    //     return false;
+    //   }
+    // });
 
-      this.authS.register(this.form.value).subscribe(data =>{
-        console.log('registro',data);
-        this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');
-        this.router.navigate(['/login']);
-      });
-
-    })
-
+    this.authS.register(this.form.value).subscribe(data =>{
+      this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');
+      this.router.navigate(['/login']);
+    });
     
-    console.log(this.form, 'El usuario se esta registrando');
   }
 
 

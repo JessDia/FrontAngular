@@ -14,13 +14,7 @@ export class WelcomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this._rolService.getRoles().subscribe((data: any) =>{
-    //   console.log(data);
-      
-    // });
-    // this._rolService.isLoggin().subscribe((data:any) =>{
-    //   console.log(data);
-    // });
+    
   }
 
 }

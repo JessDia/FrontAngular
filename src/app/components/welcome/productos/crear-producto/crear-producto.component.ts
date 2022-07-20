@@ -52,6 +52,16 @@ export class CrearProductoComponent implements OnInit {
   }
 
   updateProductos(){
+    //Validaciones
+    if(this.form.value.nombre.length > 50){
+      this.alertas.error('excede el numero de letras permitidas');
+      return false;
+    }
+
+    if(this.form.value.precio.length < 3){
+      this.alertas.error('en el campo precio debe ingresar minimo 3 numeros');
+      return false;
+    }
     this._productService.updateProductos(this.id,this.productos.productos).subscribe(data =>{
       console.log('actualizado correctamente', data);
       this.route.navigate(['/welcome/productos']);

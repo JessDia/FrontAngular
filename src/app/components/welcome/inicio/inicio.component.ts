@@ -13,6 +13,7 @@ export class InicioComponent implements OnInit {
 
   id: any;
   producto: any;
+  public form: FormGroup = new FormGroup({});
 
   constructor(
     private auth: AuthService,
@@ -21,18 +22,14 @@ export class InicioComponent implements OnInit {
     private alertas: AlertasService,
     private _authService: AuthService) { }
 
-  public form: FormGroup = new FormGroup({});
-  
   ngOnInit(): void {
-
-
     this.auth.PerfilUser().subscribe(data =>{
-    console.log(data,'Aqui traemos info delusuario');
+    console.log(data);
     });
 
     this.getProductos();
 
-    //Probando para ingresar la cantidad
+    //formulario para generar compra
     this.form = this.fb.group({
       cantidad: ['',Validators.required],
     });
@@ -42,9 +39,7 @@ export class InicioComponent implements OnInit {
     this._productoService.getProductos().subscribe((data: any) =>{
       this.producto=data.productos;
       console.log(this.producto);
-      
     });
-  
   }
 
   comprar(id:any){
@@ -53,8 +48,6 @@ export class InicioComponent implements OnInit {
       this.alertas.Exitoso('Compra exitosa, recuerde confirmar datos de envio');
       this.getProductos();
       this.form.reset();
-      
-      //validar stock no sea mayor a stock disponible.
     });
   }
 

@@ -11,6 +11,8 @@ import { AlertasService } from 'src/app/services/alertas.service';
 })
 export class AddProductosComponent implements OnInit {
 
+  //En este componente se crean los nuevos productos
+  
   public form: FormGroup = new FormGroup({});
   titulo = 'crear producto';
   titulo_boton = 'Crear';
@@ -62,8 +64,6 @@ export class AddProductosComponent implements OnInit {
         })
     })
   
-    
-    //console.log(this.form);
   }
 
   Actividad(){

@@ -17,12 +17,9 @@ export class LoginComponent implements OnInit {
 
   rol: any;
   role = (localStorage.getItem('role'));
-
   public form: FormGroup = new FormGroup({});
-
   getInto = false;
   
-
   constructor(private formb: FormBuilder,
     private _snackBar: MatSnackBar,
     private router: Router, 
@@ -45,7 +42,6 @@ export class LoginComponent implements OnInit {
       return false;
     }
     this.authS.loginUser(this.form.value).subscribe((data:any) =>{
-      //console.log(data);
 
       //toma todos los datos 
       this._tokenService.manejarDatos(data.authorisation.token);
@@ -53,7 +49,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user',JSON.stringify(data));
       localStorage.setItem('estado',JSON.stringify(data.status));
       localStorage.setItem('role',JSON.stringify(data.user.roles[0].id));
-      //console.log(this.role,'este es el rol --');
       
       if(data.authorisation.token)
       {

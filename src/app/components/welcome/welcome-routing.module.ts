@@ -21,7 +21,7 @@ const routes: Routes = [
     {path: '', component: InicioComponent},
     {path: 'usuarios', component: UsuariosComponent, canActivate:[GuardianesGuard, GuardianAdminGuard]},
     {path: 'productos', component: ProductosComponent,
-      canActivate:[GuardianVendedorGuard]},//,data:{role:'1'}
+      canActivate:[GuardianVendedorGuard]},
     {path: 'roles', component: RolesComponent, canActivate:[GuardianesGuard, GuardianAdminGuard]},
     {path: 'crear-usuario', component: CrearUsuarioComponent, canActivate:[GuardianesGuard, GuardianAdminGuard]},
     {path: 'crear-rol', component: CrearRolComponent, canActivate:[GuardianesGuard,GuardianAdminGuard]},

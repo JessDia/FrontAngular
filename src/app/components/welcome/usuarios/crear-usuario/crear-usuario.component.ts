@@ -13,6 +13,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 export class CrearUsuarioComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({});
+  existe= 0;
 
   constructor(private fb: FormBuilder,
     private _usuarioService: UsuarioService,
@@ -33,21 +34,50 @@ export class CrearUsuarioComponent implements OnInit {
     });
   }
 
-  crearUsuario(){
+  async crearUsuario(){
   
-    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(this.form.value.email))){
+    //console.log(this.form.value.password.length);
+    
+    const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (!emailRegex.test(this.form.value.email)) {
       this.alertas.error('Debe ingresar un correo valido');
       return false;
     }
-    this._usuarioService.createUser(this.form.value).subscribe(data =>{
-      console.log(data);
-      this.alertas.Exitoso('Usuario creado con exito');
-      this.route.navigate(['/welcome/usuarios']);
-    })
-    console.log(this.form);
+    if(this.form.value.password.length < 6){
+      this.alertas.error('La contraseña debe tener más de 6 digitos');
+      return false;
+    }
+
+    this._usuarioService.existe(this.form.value.email).subscribe((existe:any) =>{
+      //console.log('entro!',existe);
+      this.existe = existe.status;
+      if(this.existe==1){
+        this.alertas.error('Este email ya existe');
+          return false;
+        }
+
+        this._usuarioService.createUser(this.form.value).subscribe(data =>{
+          //console.log(data);
+          this.alertas.Exitoso('Usuario creado con exito');
+          this.route.navigate(['/welcome/usuarios']);
+        })
+    });
+
   }
 
   Actividad(){
     this.crearUsuario();
+  }
+
+  existeUsuario(){
+    
+    this._usuarioService.existe(this.form.value.email).subscribe((data:any) =>{
+      console.log('entro!',data);
+      
+      this.existe = data.status;
+
+      return data.status;
+    });
+    return this.existe;
   }
 }

@@ -4,6 +4,7 @@ import { GuardianAdminGuard } from 'src/app/guardian-admin.guard';
 import { GuardianVendedorGuard } from 'src/app/guardian-compartido.guard';
 import { GuardianRolesGuard } from 'src/app/guardian-roles.guard';
 import { GuardianesGuard } from 'src/app/guardianes.guard';
+import { DatosUsuarioComponent } from './inicio/datos-usuario/datos-usuario.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { AddProductosComponent } from './productos/add-productos/add-productos.component';
 import { CrearProductoComponent } from './productos/crear-producto/crear-producto.component';
@@ -30,8 +31,8 @@ const routes: Routes = [
     {path: 'edit-producto/:id', component: CrearProductoComponent, 
       canActivate:[GuardianVendedorGuard]},
     {path: 'editar-usuario/:id', component: EditarUsuarioComponent, canActivate:[GuardianesGuard, GuardianAdminGuard]},
-    {path: 'editar-rol/:id', component: UpdateRolComponent, canActivate:[GuardianesGuard, GuardianAdminGuard]}
-
+    {path: 'editar-rol/:id', component: UpdateRolComponent, canActivate:[GuardianesGuard, GuardianAdminGuard]},
+    {path: 'ver-datos/:id', component: DatosUsuarioComponent, canActivate:[GuardianesGuard]}
   ]}
 
 ];

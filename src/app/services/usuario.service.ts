@@ -37,5 +37,11 @@ export class UsuarioService {
     return this.http.put('http://127.0.0.1:8000/api/User/update/'+id,data);
   }
 
+  existe(email: string):any{
+    return this.http.post('http://127.0.0.1:8000/api/User/existe',{email:email});
+  }
 
+  cambiarRol(id: Usuario,rol:string){
+    return this.http.post('http://127.0.0.1:8000/api/update/'+id,{rol:rol});
+  }
 }

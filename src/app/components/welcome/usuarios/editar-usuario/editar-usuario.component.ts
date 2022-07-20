@@ -35,6 +35,7 @@ export class EditarUsuarioComponent implements OnInit {
         name: [''],
         lastname: [''],
         email: [''],
+        roles: [''],
         
       })
     }else{
@@ -59,10 +60,11 @@ export class EditarUsuarioComponent implements OnInit {
   }
 
   getUsuarioID(){
-    this._usuarioService.getUserByID(this.id).subscribe(data =>{
+    this._usuarioService.getUserByID(this.id).subscribe((data:any) =>{
       console.log('datos id', data);
       this.data = data;
-      this.usuarios = data;
+      this.data.users.roles=data.users.roles[0].name;
+      this.usuarios = this.data;
       console.log(this.usuarios, 'Si se guardan los usuarios');
     });
   }

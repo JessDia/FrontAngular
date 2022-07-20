@@ -18,7 +18,7 @@ export class UsuariosComponent implements OnInit {
 
   //usuarios: ListUser[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'lastname', 'email', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'lastname', 'email', 'roles', 'actions'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,7 +37,7 @@ export class UsuariosComponent implements OnInit {
   //Leer registros
   traerUsuarios(){
       this._UsuarioService.getUsuario().subscribe((data: any)=>{
-      //console.log(data, ' hola'); prueba
+      console.log(data, ' hola'); 
       this.dataSource = new MatTableDataSource(data.users);
       
       this.dataSource.paginator = this.paginator;

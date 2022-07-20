@@ -38,7 +38,10 @@ export class RegistroComponent implements OnInit {
   }
 
   Ingresar(){
-    
+    // if (/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.form.value.email)){
+    //   this.alertas.error('Debe ingresar un correo valido');
+    //   return false;
+    // }
     this.authS.register(this.form.value).subscribe(data =>{
       console.log('registro',data);
       this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');

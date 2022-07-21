@@ -1,7 +1,11 @@
-<div>
+<div class="container">
     <mat-toolbar>
         <span>Pagina de inicio</span>
     </mat-toolbar>
+    <mat-form-field appearance="standard">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ejm. pan" #input autocomplete="off">
+    </mat-form-field>
 </div>
 <div class="row">
   <div class="col" size="12" sizeLg="3" sizeMd="4" sizeXs="12" *ngFor="let p of producto">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { AlertasService } from 'src/app/services/alertas.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProductoService } from 'src/app/services/producto.service';
@@ -14,6 +15,7 @@ export class InicioComponent implements OnInit {
   id: any;
   producto: any;
   public form: FormGroup = new FormGroup({});
+  dataSource!: MatTableDataSource<any>;
 
   constructor(
     private auth: AuthService,
@@ -49,6 +51,11 @@ export class InicioComponent implements OnInit {
       this.getProductos();
       this.form.reset();
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

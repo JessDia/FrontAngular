@@ -1,9 +1,9 @@
-<div class="container">
+<div>
     <mat-toolbar>
         <span>Pagina de inicio</span>
     </mat-toolbar>
-    <mat-form-field appearance="standard">
-      <mat-label>Filtro</mat-label>
+    <mat-form-field appearance="standard" class="container">
+      <mat-label>Filtrar por producto</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ejm. pan" #input autocomplete="off">
     </mat-form-field>
 </div>

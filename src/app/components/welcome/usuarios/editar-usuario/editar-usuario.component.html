@@ -27,9 +27,18 @@
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
+            
                     <mat-form-field class="width">
+
                         <mat-label>Rol</mat-label>
+                        
+                        <mat-select formControlName="roles" [(ngModel)]="contenido.roles">
+                            <mat-option *ngFor="let item of listaRoles" [value]="item.id">
+                                {{item.name}}
+                            </mat-option>
+                        </mat-select>
                         <input matInput formControlName="roles" [(ngModel)]="usuarios.users.roles">
+
                     </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">

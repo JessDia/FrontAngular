@@ -23,7 +23,8 @@ export class RegistroComponent implements OnInit {
     private _snackBar: MatSnackBar, 
     private router: Router,
     private authS: AuthService,
-    private alertas: AlertasService) { 
+    private alertas: AlertasService,
+    private _usuarioService: UsuarioService) { 
   }
 
   ngOnInit(): void {
@@ -35,7 +36,7 @@ export class RegistroComponent implements OnInit {
     })
   }
   
-
+ 
   async Ingresar(){
     
     //---Validaciones
@@ -50,20 +51,19 @@ export class RegistroComponent implements OnInit {
       return false;
     }
 
-    // this.authS.existe(this.form.value.email).subscribe((existe:any)=>{
-      
-    //   this.existe = existe.status;
-    //   if(this.existe==1){
-    //     this.alertas.error('Este correo ya existe');
-    //     this.form.reset();
-    //     return false;
-    //   }
-    // });
-
-    this.authS.register(this.form.value).subscribe(data =>{
-      this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');
-      this.router.navigate(['/login']);
+    this._usuarioService.existe(this.form.value.email).subscribe((existe:any)=>{
+      this.existe = existe.status;
+      if(this.existe==1){
+        this.alertas.error('Este correo ya existe');
+        return false;
+      }
+      this.authS.register(this.form.value).subscribe(data =>{
+        this.alertas.Exitoso('Usuario registrado exitosamente, por favor inicie sesión');
+        this.router.navigate(['/login']);
+      });
     });
+
+    
     
   }
 

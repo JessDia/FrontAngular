@@ -24,6 +24,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { BnNgIdleService } from 'bn-ng-idle';
 import { CurrencyPipe } from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { CurrencyPipe } from '@angular/common';
     HttpClientModule,
     FormsModule,
     RouterModule,
+    MatSelectModule
     
   ],
   exports: [
@@ -66,6 +68,7 @@ import { CurrencyPipe } from '@angular/common';
     MatGridListModule,
     HttpClientModule,
     FormsModule,
+    MatSelectModule
   ],
   providers:[BnNgIdleService,CurrencyPipe]
 })

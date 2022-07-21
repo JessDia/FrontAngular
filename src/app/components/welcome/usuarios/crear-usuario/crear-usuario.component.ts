@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Rol } from 'src/app/Interfaces/rol';
 import { AlertasService } from 'src/app/services/alertas.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { RolService } from 'src/app/services/rol.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import {MatSelectModule} from '@angular/material/select';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -12,27 +15,41 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class CrearUsuarioComponent implements OnInit {
 
+  
+
   public form: FormGroup = new FormGroup({});
   existe= 0;
+
+  listaRoles: any;
+  roles: Rol[] = [];
 
   constructor(private fb: FormBuilder,
     private _usuarioService: UsuarioService,
     private route: Router,
     private alertas: AlertasService,
-    //private _authService: AuthService,
+    private roleService: RolService
     ) {
     
   }
 
   ngOnInit(): void {
+
+    //Select rol
+    this.roleService.getRol().subscribe((data:any) =>{
+      this.listaRoles = data.rol;
+      console.log(this.listaRoles,'aqui estan los roles');
+    })
     
     this.form = this.fb.group({
       name: ['',Validators.required],
       lastname: ['', Validators.required],
       email: ['', Validators.required ],
+      roles: ['' ,Validators.required],
       password: ['', Validators.required]
     });
+
   }
+
 
   async crearUsuario(){
   
@@ -68,12 +85,8 @@ export class CrearUsuarioComponent implements OnInit {
   }
 
   existeUsuario(){
-    
     this._usuarioService.existe(this.form.value.email).subscribe((data:any) =>{
-      console.log('entro!',data);
-      
       this.existe = data.status;
-
       return data.status;
     });
     return this.existe;

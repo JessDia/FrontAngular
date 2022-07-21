@@ -35,7 +35,4 @@ export class AuthService {
     return this.http.get('http://127.0.0.1:8000/api/auth/me');
   }
 
-  existe(email: string):any{
-    return this.http.post('http://127.0.0.1:8000/api/email/existe',{email:email});
-  }
 }

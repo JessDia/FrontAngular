@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit {
       this.error();
       this.form.reset();
     })
+
+    
   }
 
   error(){
@@ -78,6 +80,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['welcome']);
     },1500);
   }
+  
   
 
 }
